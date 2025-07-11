@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 void modularFunctionFizzBuzz(int* start, int *stop, int* step, int* fizzFrequency, int* buzzFrequency, const std::string* fizz, const std::string* buzz);
@@ -5,26 +7,24 @@ void modularFunctionFizzBuzz(int* start, int *stop, int* step, int* fizzFrequenc
 
 
 
-void modularFunctionFizzBuzz(int* start, int* stop, int* step, int* fizzFrequency, int* buzzFrequency, const std::string* fizz, const std::string* buzz) {
-
-    for (int i = *start; i <= *stop; i += *step) {
-        if (i % *fizzFrequency==0) {
-            std::cout<<*fizz;
-        }
-        if (i % *buzzFrequency==0) {
-            std::cout<< *buzz;
-        }
-
-        if (i % *buzzFrequency !=0 && i % *fizzFrequency !=0) {
-            std::cout<< i;
-        }
-
-        std::cout<<std::endl;
-
-
-    }
 
 
 
+struct fizzBuzzConfig {
+    int start = 1, stop =100, step =1, fizzFreq =3, buzzFreq=5;
+    std::string fizz = "fizz", buzz = "buzz";
 
-}
+};
+
+
+class FizzBuzzEngine {
+
+    public:
+    FizzBuzzEngine(const fizzBuzzConfig* config);
+
+    void run();
+
+    private:
+    const fizzBuzzConfig* cfg;
+
+};
